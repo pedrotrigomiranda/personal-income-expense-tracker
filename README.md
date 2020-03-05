@@ -8,7 +8,7 @@ This app allows the user to add income and expenses, with their respective descr
 
 Backend built with Node.js/Express and MongoDB database.
 
-Fronted uses React with hooks (useState, useContext, useReducer).
+Frontend uses React with hooks (useState, useContext, useReducer).
 
 Npm packages used:
 
