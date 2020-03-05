@@ -1,6 +1,6 @@
-import React, { createContext, useReducer } from "react";
-import AppReducer from "./AppReducer";
-import axios from "axios";
+import React, { createContext, useReducer } from 'react';
+import AppReducer from './AppReducer';
+import axios from 'axios';
 
 // Initial state
 const initialState = {
@@ -19,15 +19,15 @@ export const GlobalProvider = ({ children }) => {
   // Actions
   async function getTransactions() {
     try {
-      const res = await axios.get("/api/transactions");
+      const res = await axios.get('/api/transactions');
 
       dispatch({
-        type: "GET_TRANSACTIONS",
+        type: 'GET_TRANSACTIONS',
         payload: res.data.data
       });
     } catch (err) {
       dispatch({
-        type: "TRANSACTION_ERROR",
+        type: 'TRANSACTION_ERROR',
         payload: err.response.data.error
       });
     }
@@ -38,12 +38,12 @@ export const GlobalProvider = ({ children }) => {
       await axios.delete(`/api/transactions/${id}`);
 
       dispatch({
-        type: "DELETE_TRANSACTION",
+        type: 'DELETE_TRANSACTION',
         payload: id
       });
     } catch (err) {
       dispatch({
-        type: "TRANSACTION_ERROR",
+        type: 'TRANSACTION_ERROR',
         payload: err.response.data.error
       });
     }
@@ -52,20 +52,20 @@ export const GlobalProvider = ({ children }) => {
   async function addTransaction(transaction) {
     const config = {
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       }
     };
 
     try {
-      const res = await axios.post("/api/transactions", transaction, config);
+      const res = await axios.post('/api/transactions', transaction, config);
 
       dispatch({
-        type: "ADD_TRANSACTION",
+        type: 'ADD_TRANSACTION',
         payload: res.data.data
       });
     } catch (err) {
       dispatch({
-        type: "TRANSACTION_ERROR",
+        type: 'TRANSACTION_ERROR',
         payload: err.response.data.error
       });
     }
